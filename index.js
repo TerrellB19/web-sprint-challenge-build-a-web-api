@@ -1,3 +1,7 @@
+require('dotenv').config()
+const server = require('./api/server')
+
+const port = process.env.PORT || 9000
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
@@ -12,3 +16,11 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Pull your server into this file and start it!
 */
+
+server.use('*', (req, res) => {
+    res.send('Welcome')
+})
+
+server.listen(port, () => {
+    console.log(`API active on http://localhost:${port}`)
+})
